@@ -10,7 +10,7 @@ public class Person {
     private long id;
     private String name;
     private String lastName;
-    private int zipCode;
+    private String zipCode;
     private String city;
     private String color;
 
@@ -18,7 +18,7 @@ public class Person {
 
     }
 
-    public Person(long id, String name, String lastName, int zipCode, String city, String color) {
+    public Person(long id, String name, String lastName, String zipCode, String city, String color) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -51,11 +51,11 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public int getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(int zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 
@@ -73,5 +73,17 @@ public class Person {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", city='" + city + '\'' +
+                ", color='" + color + '\'' +
+                '}';
     }
 }

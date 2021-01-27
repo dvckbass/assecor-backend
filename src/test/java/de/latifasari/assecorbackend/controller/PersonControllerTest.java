@@ -1,7 +1,7 @@
 package de.latifasari.assecorbackend.controller;
 
 import de.latifasari.assecorbackend.model.Person;
-import de.latifasari.assecorbackend.service.PersonService;
+import de.latifasari.assecorbackend.repository.PersonRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 @WebMvcTest(PersonController.class)
 public class PersonControllerTest {
     @MockBean
-    private PersonService personService;
+    private PersonRepository personRepository;
 
     @Autowired
     private MockMvc mockMvc;
@@ -28,8 +28,8 @@ public class PersonControllerTest {
     // Test für /persons
     @Test
     public void getPersons() throws Exception {
-        when(personService.findAll())
-                .thenReturn(List.of(new Person(1, "Hans", "Müller", "67742", "Lauterecken", "blau" )));
+        when(personRepository.findAll())
+                .thenReturn(List.of(new Person( "Hans", "Müller", "67742", "Lauterecken", "blau" )));
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders.get("/persons"))
@@ -42,8 +42,8 @@ public class PersonControllerTest {
     // Test für /persons/{id}
     @Test
     public void getPersonById() throws Exception {
-        Person person = new Person(50L, "Ardilla", "Latifasari", "55555", "Berlin", "blau");
-        when(personService.findPersonById(50L)).thenReturn(person);
+//        Person firstPerson = personRepository.findFirstById();
+//        when(personRepository.findById(1L)).thenReturn(java.util.Optional.ofNullable(firstPerson));
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders.get("/persons/50"))
@@ -55,8 +55,8 @@ public class PersonControllerTest {
     // Test für /persons/color/{color}
     @Test
     public void getPersonByColor() throws Exception {
-        when(personService.findPersonByColor("blau"))
-                .thenReturn(List.of(new Person(1, "Hans", "Müller", "67742", "Lauterecken", "blau" )));
+        when(personRepository.findByColor("blau"))
+                .thenReturn(List.of(new Person("Hans", "Müller", "67742", "Lauterecken", "blau" )));
 
         this.mockMvc
                 .perform(MockMvcRequestBuilders.get("/persons/color/blau"))

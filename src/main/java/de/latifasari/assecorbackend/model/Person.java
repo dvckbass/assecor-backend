@@ -1,12 +1,14 @@
 package de.latifasari.assecorbackend.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Person {
 
     @Id
+    @GeneratedValue
     private long id;
     private String name;
     private String lastName;
@@ -15,11 +17,9 @@ public class Person {
     private String color;
 
     public Person() {
-
     }
 
-    public Person(long id, String name, String lastName, String zipCode, String city, String color) {
-        this.id = id;
+    public Person(String name, String lastName, String zipCode, String city, String color) {
         this.name = name;
         this.lastName = lastName;
         this.zipCode = zipCode;

@@ -77,4 +77,12 @@ public class PersonService {
     public Iterable<Person> findAll() {
         return this.personRepository.findAll();
     }
+
+    public Person findPersonById(Long id) {
+        return this.personRepository.findById(id).get();
+    }
+
+    public Iterable<Person> findPersonByColor(String color) {
+        return this.personRepository.getPersonByColor(color);
+    }
 }

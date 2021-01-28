@@ -1,7 +1,9 @@
 package de.latifasari.assecorbackend.controller;
 
+import de.latifasari.assecorbackend.config.PersonNotFoundException;
 import de.latifasari.assecorbackend.model.Person;
 import de.latifasari.assecorbackend.repository.PersonRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,7 +22,8 @@ public class PersonController {
 
     @GetMapping("/{id}")
     public Person getPersonById(@PathVariable Long id) {
-        return this.personRepository.findById(id).get();
+        return this.personRepository.findById(id).orElseThrow(
+                () -> new PersonNotFoundException(id));
     }
 
     @GetMapping("/color/{color}")
@@ -29,6 +32,7 @@ public class PersonController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Person createPerson(@RequestBody Person person) {
         return this.personRepository.save(person);
     }

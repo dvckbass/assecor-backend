@@ -53,7 +53,7 @@ public class LoadDatabase {
 
         return args -> {
           persons.forEach(person -> {
-              log.info("Erstellung einer Person" + repository.save(person));
+              log.info("Erstellung einer Person: " + repository.save(person));
           });
         };
 
@@ -68,9 +68,9 @@ public class LoadDatabase {
         String zipCode = address.substring(0, address.indexOf(' '));
         String city = address.substring(address.indexOf(' ') + 1);
         int colorId = Integer.parseInt(list.get(3));
-        person.setLastName(lastName);
+        person.setLastname(lastName);
         person.setName(name);
-        person.setZipCode(zipCode);
+        person.setZipcode(zipCode);
         person.setCity(city);
         colorMap.keySet().forEach(color -> {
             if(color == colorId) {

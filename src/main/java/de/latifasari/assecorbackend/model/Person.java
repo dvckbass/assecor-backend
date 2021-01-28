@@ -11,18 +11,18 @@ public class Person {
     @GeneratedValue
     private long id;
     private String name;
-    private String lastName;
-    private String zipCode;
+    private String lastname;
+    private String zipcode;
     private String city;
     private String color;
 
     public Person() {
     }
 
-    public Person(String name, String lastName, String zipCode, String city, String color) {
+    public Person(String name, String lastname, String zipcode, String city, String color) {
         this.name = name;
-        this.lastName = lastName;
-        this.zipCode = zipCode;
+        this.lastname = lastname;
+        this.zipcode = zipcode;
         this.city = city;
         this.color = color;
     }
@@ -43,20 +43,20 @@ public class Person {
         this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastName) {
+        this.lastname = lastName;
     }
 
-    public String getZipCode() {
-        return zipCode;
+    public String getZipcode() {
+        return zipcode;
     }
 
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
+    public void setZipcode(String zipCode) {
+        this.zipcode = zipCode;
     }
 
     public String getCity() {
@@ -80,8 +80,8 @@ public class Person {
         return "Person{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", zipCode='" + zipCode + '\'' +
+                ", lastName='" + lastname + '\'' +
+                ", zipCode='" + zipcode + '\'' +
                 ", city='" + city + '\'' +
                 ", color='" + color + '\'' +
                 '}';
